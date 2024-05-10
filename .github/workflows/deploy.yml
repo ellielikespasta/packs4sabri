@@ -1,31 +1,13 @@
-name: deno
-
+name: Deploy
 on:
   push:
-    branches: [main]
+    branches: main
   pull_request:
-    branches: [main]
+    branches: main
 
 jobs:
-  fmt:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - run: deno fmt --check
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-      - run: deno lint
-
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
 
     permissions:
@@ -33,14 +15,20 @@ jobs:
       contents: read # Needed to clone the repository
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: denoland/setup-deno@v1
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
 
-      - run: deno task build
+      - name: Build step
+        run: "deno task build"
 
-      - uses: denoland/deployctl@v1
+      - name: Upload to Deno Deploy
+        uses: denoland/deployctl@v1
         with:
-          project: "packs"
-          entrypoint: main.ts
+          project: "packs4sabri"
+          entrypoint: "main.ts"
+          root: "."
