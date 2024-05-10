@@ -29,6 +29,6 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "ellielikesp-packs4sabri-40"
+          project: "packs4sabri"
           entrypoint: "main.ts"
           root: "."
