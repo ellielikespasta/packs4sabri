@@ -31,4 +31,4 @@ jobs:
         with:
           project: "packs4sabri"
           entrypoint: "main.ts"
-          root: "."
+          root: ""
