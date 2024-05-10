@@ -15,7 +15,7 @@ A portal app to create, manage and publish community packs
 deno task start
 ```
 
-###### Required Environment Variables:
+###### Required Environment Variables: 
 
 - DISCORD_CLIENT_ID: a discord oauth client id
 - DISCORD_CLIENT_SECRET: a discord oauth client secret
